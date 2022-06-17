@@ -37,3 +37,20 @@ steps:
     experimental: true
     compress: true
     squash: true
+- name: ghcr-TAG
+  image: plugins/docker
+  when:
+    event:
+      - tag
+  settings:
+    username: beardedtek
+    password:
+      from_secret: docker_password
+    repo: ghcr.io/beardedtek-com/fevr-base
+    registry: ghcr.io
+    tags: latest,${DRONE_TAG}
+    experimental: true
+    compress: true
+    squash: true
+image_pull_secrets:
+  - docker-auth-beardedtek.com
