@@ -31,7 +31,7 @@ steps:
     username: beardedtek
     password:
       from_secret: docker_password
-    repo: docker.beardedtek.com/beardedtek/fevr-base
+    repo: docker.beardedtek.com/beardedtek-com/fevr-base
     registry: docker.beardedtek.com
     tags: latest,${DRONE_REPO_BRANCH}
     experimental: true
