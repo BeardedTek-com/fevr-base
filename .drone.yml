@@ -1,0 +1,39 @@
+kind: pipeline
+name: default
+trigger:
+  branch:
+    - main
+  event:
+    - push
+    - tag
+steps:
+- name: beardedtek-PUSH
+  image: plugins/docker
+  when:
+    event:
+      - push
+  settings:
+    username: beardedtek
+    password:
+      from_secret: docker_password
+    repo: docker.beardedtek.com/beardedtek/fevr-base
+    registry: docker.beardedtek.com
+    tags: latest,${DRONE_REPO_BRANCH}
+    experimental: true
+    compress: true
+    squash: true
+- name: beardedtek-TAG
+  image: plugins/docker
+  when:
+    event:
+      - tag
+  settings:
+    username: beardedtek
+    password:
+      from_secret: docker_password
+    repo: docker.beardedtek.com/beardedtek/fevr-base
+    registry: docker.beardedtek.com
+    tags: latest,${DRONE_TAG}
+    experimental: true
+    compress: true
+    squash: true
