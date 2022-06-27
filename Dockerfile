@@ -4,7 +4,7 @@ COPY rootfs /
 
 WORKDIR /fevr
 
-RUN apk --no-cache add py3-pip pcre pcre2 git nano tailscale caddy && \
+RUN apk --no-cache add py3-pip py3-netifaces pcre pcre2 git nano tailscale caddy && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     apk --no-cache add python3-dev build-base linux-headers pcre-dev && \
     python3 -m venv venv && \
