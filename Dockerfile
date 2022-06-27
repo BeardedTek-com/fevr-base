@@ -1,4 +1,4 @@
-FROM ghcr.io/home-assistant/amd64-base-python:3.10-alpine3.15
+FROM ghcr.io/home-assistant/amd64-base-python:3.10-alpine3.15 as build
 
 COPY rootfs /
 
@@ -19,3 +19,6 @@ RUN apk --no-cache del python3-dev build-base linux-headers pcre-dev && \
     adduser -u 1000 -h /fevr -D fevr && \
     chown -R fevr /fevr
 
+FROM scratch
+COPY --from=build / /
+ENTRYPOINT ["/init"]
