@@ -12,13 +12,14 @@ steps:
   when:
     event:
       - push
+      - tag
   settings:
     username: beardedtek
     password:
       from_secret: docker_password
     repo: docker.beardedtek.com/beardedtek-com/fevr-base
     registry: docker.beardedtek.com
-    tags: latest,${DRONE_REPO_BRANCH}
+    tags: latest,0.6,${DRONE_REPO_BRANCH}
     experimental: true
     compress: true
     squash: true
