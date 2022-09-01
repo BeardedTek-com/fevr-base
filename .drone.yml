@@ -19,7 +19,7 @@ steps:
       from_secret: docker_password
     repo: docker.beardedtek.com/beardedtek-com/fevr-base
     registry: docker.beardedtek.com
-    tags: latest,0.6,${DRONE_REPO_BRANCH}
+    tags: 0.6,0.7-dev
     experimental: true
     compress: true
     squash: true
